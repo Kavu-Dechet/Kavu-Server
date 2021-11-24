@@ -1,0 +1,8 @@
+all:
+  hosts:
+    server:
+      ansible_host: 51.68.90.188
+      #ansible_host: nsi.ymougenel.com
+
+  vars:
+    ansible_user: centos
