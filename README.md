@@ -13,6 +13,7 @@ ansible-playbook ansible/install.playbook.yml -i ansible/inventories/pikachu.yml
 ```
 
 => Opened ports [doc](https://gist.github.com/ymougenel/85e50ca15cfeab441774361c73ba6e0f#open-ports)
+* 5533 (Database)
 __TODO__: open port via ansible
 
 ## Maintenance
