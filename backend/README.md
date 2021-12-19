@@ -4,4 +4,4 @@
 ## With maven
 mvn package
 mvn spring-boot:run
-curl -d "category=toto&longitude=10&lattitude=5" -X POST http://localhost:8080/dechets/1
+curl -d "category=toto&longitude=10&latitude=5" -X POST http://localhost:8080/dechets/1
