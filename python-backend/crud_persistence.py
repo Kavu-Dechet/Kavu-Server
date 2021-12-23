@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import psycopg2
+
+import config_persistence
 from sql import commands
 import random
 
@@ -9,6 +11,12 @@ connection = psycopg2.connect(
     database="demo",
     user="dbuser",
     password="dbp4ss")
+
+
+def init():
+    global connection
+    if not connection:
+        connection = config_persistence.init_connection()
 
 
 def query_all_dechets():
