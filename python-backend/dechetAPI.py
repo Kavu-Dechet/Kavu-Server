@@ -1,5 +1,7 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, redirect, url_for
 import crud_persistence
+
+import images_persistence
 
 app = Flask(__name__)
 
@@ -26,6 +28,16 @@ def get_all_dechets():
                             "longitude": dechet[2],
                             "ville": dechet[3]} for dechet in result])
     return jsonify(status="False")
+
+
+@app.route('/photo/', methods=['POST'])
+def upload_photo():
+    if 'photo' not in request.files:
+        print("Error: no photo attached")
+        return redirect(request.url)
+    file = request.files['photo']
+    filename = images_persistence.save_image(file)
+    return redirect(url_for('upload_photo', filename=filename))
 
 
 if __name__ == '__main__':

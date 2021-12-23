@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  kavu-database:
+    image: postgres:11.1
+    container_name: kavu-database
+    environment:
+      - POSTGRES_PASSWORD=dbp4ss
+      - POSTGRES_DB=kavu
+      - POSTGRES_USER=dbuser
+    ports:
+      - "5432:5432"
+    networks:
+      - kavu-network
+
+  kavu-backend:
+    image: slonepi/kavu-dechet-backend:0.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kavu-backend
+    ports:
+      - 5000:5000
+    volumes:
+      - "./images:/tmp/images"
+    networks:
+      - kavu-network
+
+networks:
+  kavu-network:
+    driver: bridge

@@ -6,11 +6,7 @@ import config_persistence
 from sql import commands
 import random
 
-connection = psycopg2.connect(
-    host="localhost",
-    database="demo",
-    user="dbuser",
-    password="dbp4ss")
+connection = None
 
 
 def init():
