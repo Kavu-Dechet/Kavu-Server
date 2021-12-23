@@ -2,17 +2,17 @@ version: '3'
 
 services: 
 
-#  rc-database:
-#    image: postgres:11.1
-#    container_name: rc-database
-#    environment:
-#      - POSTGRES_PASSWORD=dbp4ss
-#      - POSTGRES_DB=reference_collector
-#      - POSTGRES_USER=dbuser
-#    ports:
-#      - "5432:5432"
-#    networks:
-#      - rc
+  kavu-database:
+    image: postgres:11.1
+    container_name: kavu-database
+    environment:
+      - POSTGRES_PASSWORD=dbp4ss
+      - POSTGRES_DB=kavu
+      - POSTGRES_USER=dbuser
+    ports:
+      - "5533:5432"
+    networks:
+      - kavu-network
 
   kavu-dechet-back:
     image: slonepi/kavu-dechet-backend:0.0.0
@@ -24,14 +24,9 @@ services:
       - 8080:8080
     volumes:
       - "./images:/tmp/images"
-#    networks:
-#      - keycloak
-#      - rc
+    networks:
+      - kavu-network
 
-#networks:
-#  keycloak:
-#    name: keycloak-network
-#    external: true
-#  rc:
-#    name: rc
-#    driver: bridge
+networks:
+  kavu-network:
+    driver: bridge
