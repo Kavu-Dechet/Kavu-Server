@@ -11,14 +11,13 @@ connection = psycopg2.connect(
     password="dbp4ss")
 
 
-# def readDechet():
-#     cursor = connection.cursor()
-#     query = "SELECT * FROM demo_entity WHERE name=%s;"
-#     cursor.execute(query, ("johnny",))
-#     results = cursor.fetchall()
-#     for r in results:
-#         print(r)
-#     cursor.close()
+def query_all_dechets():
+    cursor = connection.cursor()
+    query = "SELECT * FROM dechets"
+    cursor.execute(query)
+    results = cursor.fetchall()
+    cursor.close()
+    return results
 
 
 def insert_dechet(latitude, longitude, categorie):
