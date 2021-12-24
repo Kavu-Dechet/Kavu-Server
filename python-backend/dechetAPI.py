@@ -26,7 +26,7 @@ def get_all_dechets():
                            {"id": dechet[0],
                             "latitude": dechet[1],
                             "longitude": dechet[2],
-                            "ville": dechet[3]} for dechet in result])
+                            "categorie": dechet[3]} for dechet in result])
     return jsonify(status="False")
 
 
