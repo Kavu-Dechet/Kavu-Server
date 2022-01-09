@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, redirect, url_for
+from flask import Flask, jsonify, request, redirect, url_for, render_template
 import crud_persistence
 
 import images_persistence
@@ -38,6 +38,11 @@ def upload_photo():
     file = request.files['photo']
     filename = images_persistence.save_image(file)
     return redirect(url_for('upload_photo', filename=filename))
+
+#TODO: move to new file
+@app.route('/privacy-policy', methods=['GET'])
+def get_privacy_policy():
+    return render_template("privacy-policy.html")
 
 
 if __name__ == '__main__':
