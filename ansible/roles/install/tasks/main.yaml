@@ -10,7 +10,7 @@
    when: ansible_distribution_version|int < 8
 
 -  name: Install Docker
-   yum: name=docker state=latest
+   yum: name=docker-ce state=latest
    when: ansible_distribution_version|int >= 8
 
 -  name: Add user to docker group
@@ -31,7 +31,7 @@
      name: "{{ item }}"
      state: present
    with_items:
-     - "epel-release" #TODO list
+     - "epel-release" #TODO var list
      - "certbot"
      #- "python-certbot-apache"
      - "vim"
@@ -40,4 +40,12 @@
      - "firewalld"
 
 
-# TODO open port 80 443
+- name: Open Server ports
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    zone: public
+  with_items:
+    - 80/tcp
+    - 443/tcp

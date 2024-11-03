@@ -5,5 +5,3 @@
   become: yes
   roles:
     - role: install
-      # vars:
-         # repos: "{{ commun_repos }}"

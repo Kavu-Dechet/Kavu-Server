@@ -1,0 +1,7 @@
+all:
+  hosts:
+    server:
+      ansible_host: my_server # Change with server IP or DNS
+
+  vars:
+    ansible_user: my_user # Change with server user
